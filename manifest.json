@@ -1,0 +1,29 @@
+{
+    "short_name": "Weather",
+    "name": "Weather",
+    "start_url":"/",
+    "scope":"/",
+    "theme_color":"#024238",
+    "description": "Weather forecast information",
+    "display": "standalone",
+    "background_color":"#047564",
+    "icons": [
+      {
+        "src": "images/favicon-16x16.png",
+        "type": "image/png",
+        "sizes": "16x16"
+      },
+      {
+        "src": "images/favicon-32x32.png",
+        "type": "image/png",
+        "sizes": "32x32"
+      },
+      {
+        "src":"images/android-chrome-192x192.png",
+        "type":"image/png",
+        "sizes":"192x192"  
+      }
+
+    ]
+    
+  }
