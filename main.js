@@ -1,8 +1,10 @@
 
 //weather app api
+var token = config.MY_API_TOKEN;
+var key = config.SECRET_API_KEY;
 city_id= "184745" ;
 base_url= "https://api.openweathermap.org/data/2.5/weather?";
-final_url= `${base_url}q=${city_id}&APPID=${config.key}`
+final_url= `${base_url}q=${city_id}&APPID=` + token + key;
 
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
@@ -14,8 +16,9 @@ function setQuery(evt) {
     }
 }
 
+
 function getResults (query) {
-    fetch(`${base_url}q=${query}&units=metric&APPID=${config.key}`)
+    fetch(`${base_url}q=${query}&units=metric&APPID=` + token + key)
      .then(weather => {
         return weather.json(); 
      }).then(displayResults);
@@ -23,6 +26,7 @@ function getResults (query) {
 
 
 function displayResults (weather){
+    console.log(weather)
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`;
 
@@ -30,13 +34,13 @@ function displayResults (weather){
     let date =  document.querySelector('.location .date');
     date.innerText = dateBuilder(now);
 
-    let temp = document.querySelector(".current .temp");
+    let temp = document.querySelector('.current .temp');
     temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
 
-    let weather_el = document.querySelector(".current .weather");
+    let weather_el = document.querySelector('.current .weather');
     weather_el.innerText = weather.weather[0].main;
 
-    let hilow = document.querySelector(".hi-low");
+    let hilow = document.querySelector('.hi-low');
     hilow.innerText = `${weather.main.temp_min}°c / ${weather.main.temp_max}°c`;
 
 }
